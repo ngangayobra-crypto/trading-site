@@ -19,11 +19,11 @@ export function SettingsPage() {
           <button className="secondary" onClick={toggleRole}>Toggle demo admin role</button>
         </Panel>
         <Panel>
-          <SectionHeader title="Security" />
+          <SectionHeader title="Demo Access" />
           <div className="settings-list">
-            <label><span>Password</span><button className="text-button">Change password</button></label>
-            <label><span>Email verification</span><StatusPill tone="green">Enabled in Supabase</StatusPill></label>
-            <label><span>Session persistence</span><StatusPill tone="green">Enabled</StatusPill></label>
+            <label><span>Access method</span><StatusPill tone="neutral">Email only</StatusPill></label>
+            <label><span>Password</span><StatusPill tone="neutral">Not used</StatusPill></label>
+            <label><span>Account storage</span><StatusPill tone="amber">This browser session</StatusPill></label>
           </div>
         </Panel>
         <Panel>

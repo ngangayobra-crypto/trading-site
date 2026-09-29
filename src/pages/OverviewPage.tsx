@@ -40,7 +40,8 @@ export function OverviewPage() {
             <thead><tr><th>Symbol</th><th>Asset</th><th>Quantity</th><th>Average</th><th>Current</th><th>Market value</th><th>P&L</th></tr></thead>
             <tbody>
               {positions.map((position) => {
-                const market = markets.find((item) => item.id === position.marketId)!
+               const market = markets.find((item) => item.id === position.marketId)
+if (!market) return null
                 const pnl = (market.price - position.averagePrice) * position.quantity
                 return <tr key={position.marketId}><td>{market.symbol}</td><td>{market.name}</td><td>{number(position.quantity, 6)}</td><td>{money(position.averagePrice)}</td><td>{money(market.price)}</td><td>{money(market.price * position.quantity)}</td><td className={pnl >= 0 ? 'positive' : 'negative'}>{money(pnl)} ({percent(pnl / (position.averagePrice * position.quantity) * 100)})</td></tr>
               })}

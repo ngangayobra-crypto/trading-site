@@ -9,7 +9,7 @@ interface TradingContextValue extends TradingState {
   auditLogs: AuditLog[]
   metrics: ReturnType<typeof portfolioMetrics>
   login: (email: string) => void
-  signup: (email: string, displayName: string) => void
+  signup: (email: string) => void
   logout: () => void
   submitVirtualOrder: (request: Omit<OrderRequest, 'userId'>) => string
   cancelVirtualOrder: (orderId: string) => void
@@ -47,7 +47,8 @@ export function DemoTradingProvider({ children }: { children: ReactNode }) {
       setState((current) => ({ ...current, user: nextUser, account: { ...current.account, userId: nextUser.id } }))
       setAuditLogs((logs) => [{ id: crypto.randomUUID(), action: 'LOGIN', actor: email, target: nextUser.id, createdAt: new Date().toISOString() }, ...logs])
     },
-    signup(email, displayName) {
+    signup(email) {
+      const displayName = email.split('@')[0]?.trim() || 'Paper Trader'
       const nextUser = { ...demoUser, id: crypto.randomUUID(), email, displayName, createdAt: new Date().toISOString() }
       setSession(nextUser)
       setState((current) => ({

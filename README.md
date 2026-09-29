@@ -18,7 +18,7 @@ npm run test
 npm run build
 ```
 
-## Supabase setup
+## Optional Supabase backend setup
 
 1. Create a Supabase project.
 2. Copy `.env.example` to `.env.local`.
@@ -26,14 +26,15 @@ npm run build
 4. Apply `supabase/migrations/202607300001_initial_paper_trading.sql`.
 5. Optionally apply `supabase/seed/demo_seed.sql`.
 
-Keep `SUPABASE_SERVICE_ROLE_KEY` and `MARKET_DATA_API_KEY` server-side only. Do not prefix private variables with `VITE_`.
+This prepares the database for a future persistent backend; the current UI does not call Supabase or Supabase Auth. Keep `SUPABASE_SERVICE_ROLE_KEY` and `MARKET_DATA_API_KEY` server-side only. Do not prefix private variables with `VITE_`.
 
 ## Demo access
 
-The current local build includes a demo provider so the product works before external market-data credentials exist.
+The current local build uses an in-memory demo provider. It is not connected to Supabase Auth and does not create persistent user accounts.
 
-- Use `demo@northstar.paper` for a normal simulated account.
-- Use any email containing `admin` for the admin console demo.
+- Enter any email address to open a normal simulated account.
+- No password is required, stored, or changeable in this demo.
+- The account resets when the page reloads; it is not appropriate for a live deployment.
 
 ## Architecture
 

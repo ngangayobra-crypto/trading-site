@@ -60,7 +60,7 @@ export function LandingPage() {
           {markets.map((market) => <span key={market.id}>{market.symbol} <strong>{money(market.price, market.price < 5 ? 4 : 2)}</strong></span>)}
         </section>
         <section id="features" className="content-band two">
-          <article><ShieldCheck /><h2>Security first</h2><p>Supabase Auth, PostgreSQL RLS, audit logs, server-side authorization, and no browser service keys.</p></article>
+          <article><ShieldCheck /><h2>Simulator safeguards</h2><p>Virtual funds, clearly labelled simulated data, paper-trading limits, and audit trails keep the demo transparent.</p></article>
           <article><LockKeyhole /><h2>Simulation guardrails</h2><p>No real deposits or withdrawals. Every authenticated screen states that funds are virtual.</p></article>
         </section>
         <section id="faq" className="faq">
